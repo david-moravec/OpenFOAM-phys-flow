@@ -25,7 +25,7 @@ Application
     flow_solver_1.1
 
 Description
-    Large time-step transient solver for incompressible, turbulent flow, using
+    Large time-step transient solver for incompressible, momentumTransport flow, using
     the PIMPLE (merged PISO-SIMPLE) algorithm.
     Windkessel boundary condition that is calculated at the end of every timesetp
     and is applied to the boundary condition with a scalarIOList.
@@ -37,7 +37,7 @@ Description
 
 #include "fvCFD.H"
 #include "singlePhaseTransportModel.H"
-#include "turbulentTransportModel.H"
+#include "kinematicMomentumTransportModel.H"
 #include "pimpleControl.H"
 #include "fvOptions.H"
 #include "fixedFluxPressureFvPatchScalarField.H"
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     #include "createFvOptions.H"
     #include "initContinuityErrs.H"
 
-    turbulence->validate();
+    momentumTransport->validate();
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -99,7 +99,7 @@ Info<< "\nStarting time loop\n" << endl;
             if (pimple.turbCorr())
             {
                 laminarTransport.correct();
-                turbulence->correct();
+                momentumTransport->correct();
             }
         }
 

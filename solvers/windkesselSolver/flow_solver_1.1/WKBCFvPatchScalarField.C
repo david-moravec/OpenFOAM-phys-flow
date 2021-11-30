@@ -140,9 +140,9 @@ void WKBCFvPatchScalarField::updateCoeffs()
 void WKBCFvPatchScalarField::write(Ostream& os) const
 {
     fvPatchScalarField::write(os);
-    os.writeKeyword("index") 
-        << index_ << token::END_STATEMENT << nl;
-	writeEntry("value",os);
+    //os.writeKeyword("index") 
+     //   << index_ << token::END_STATEMENT << nl;
+	writeEntry(os, "value", index_);
 
 }
 

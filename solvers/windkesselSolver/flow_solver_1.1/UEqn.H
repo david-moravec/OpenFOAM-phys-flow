@@ -6,7 +6,7 @@ tmp<fvVectorMatrix> tUEqn
 (
     fvm::ddt(U) + fvm::div(phi, U)
   + MRF.DDt(U)
-  + turbulence->divDevReff(U)
+  + momentumTransport->divDevSigma(U)
  ==
     fvOptions(U));
 fvVectorMatrix& UEqn = tUEqn.ref();

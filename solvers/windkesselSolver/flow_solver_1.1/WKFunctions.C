@@ -35,7 +35,7 @@ void initialise(const dictionary& windkesselProperties)
  /* Initialising Windkessel object */
 
 	int i;
-	wk = (WindKessel*)malloc(N_OUTLETS*sizeof(WindKessel));
+	wk = static_cast<WindKessel*>(malloc(N_OUTLETS*sizeof(WindKessel)));
 	for (i=0;i<N_OUTLETS;i++)
 	{
 		/* retrieve from Scheme instantiation : First instantiation variables */
